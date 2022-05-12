@@ -1,0 +1,10 @@
+adelantar y retrodecer con las flechas 
+pausas con espacio 
+pantalla competa 
+cambio de resolucion -----------
+velicidad de reproduccion
+screeshop----------------------
+previsualizacion-----------------
+ventana flotante
+imagen de previsualizacion
+repetir al terminar

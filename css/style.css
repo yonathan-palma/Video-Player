@@ -1,0 +1,59 @@
+body{
+    background-color: #3b576d;
+}
+
+#video{
+    cursor: pointer;
+}
+#volumeRange{
+    margin-right: 6px;
+}
+.controls_left span{
+    font-size: 12px;
+}
+.space{
+    margin: 0 2px;
+}
+.porgress_container{
+    position: relative;
+    height: 10px;
+}
+.fullScreen{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /* height: 100vh; */
+    width: 100vw !important;
+}
+
+.video__fullscreen{
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.control__fullscreen{
+    position: absolute;
+    bottom: 0;
+    /* right: 20%; */
+}
+
+.progress_video{
+    cursor: pointer;
+    height: 6px;
+    /* position: absolute; */
+}
+.progress_range{
+    width:100%; 
+    visibility: hidden;
+}
+/* .progress_video:hover > .progress_range{
+    display: none;
+} */
+
+@media (max-width: 425px) {
+    #volumeRange{
+        width: 70px;
+    }
+}

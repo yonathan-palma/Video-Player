@@ -1,2 +1,2 @@
-# Video-Player
-Video player with HTML and JavaScript
+# Video-player
+html5 video player and javascript api rest 
