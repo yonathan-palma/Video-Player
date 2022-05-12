@@ -1,1 +1,4 @@
-$ git rm --cached asset
+$ git rm --cached VID_20211031_100229.mp4
+
+# Ignora todos los archivos de texto
+*.mp4
