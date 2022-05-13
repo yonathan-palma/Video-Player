@@ -9,6 +9,7 @@ const mute = document.querySelector(".bi-volume-mute");
 const volumeRange = document.getElementById("volumeRange");
 const fullScreen = document.getElementById("fullScreen");
 const progressBar = document.getElementById("progress_bar_video");
+const progress_video = document.querySelector(".progress_video");
 const speedSelect = document.getElementById("speedVideo");
 let videoBarProgress;
 let videoTimeBar;
@@ -18,7 +19,7 @@ btnPlay.addEventListener("click", playPause);
 btnVolume.addEventListener("click", volumeMute);
 volumeRange.addEventListener("change", setVolume);
 fullScreen.addEventListener("click", screenFull);
-speedSelect.addEventListener("change", ChangeVideospeed)
+progress_video.addEventListener("click", serchCurrentTime);
 window.addEventListener("keydown", keyEvent);
 
 const videoProgress = ()=>{
@@ -185,8 +186,17 @@ video_container.addEventListener("fullscreenchange", ()=>{
     //     console.log("entra");
     // }
 })
-function ChangeVideospeed(){
+speedSelect.addEventListener("change", ()=>{
     video.playbackRate = speedSelect.value;
+})
+
+function serchCurrentTime(e){
+    
+    let getCurrentTime = e.offsetX ;
+    let porcentaje = Math.floor((getCurrentTime / progress_video.offsetWidth) * 100);
+    video.currentTime = Math.floor((video.duration * porcentaje) / 100);
+    setTimeVideo();
+    videoProgress();
 }
 
 setTimeout(durationVideo,500);
