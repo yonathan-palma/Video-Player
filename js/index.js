@@ -2,7 +2,14 @@
 
 const url = 'http://www.jplayer.org/video/webm/Incredibles_Teaser.webm';
 const video = document.getElementById("video");
-video.src = url;
+window.fetch(url)
+    // .then(response => response.json())
+    .then((data) => {
+        video.src = data.url;
+        setTimeout(durationVideo,1000); 
+    });
+    
+
 const video_container = document.getElementById("video_container");
 const btnPlay = document.getElementById("play");
 const btnVolume = document.getElementById("icon_volume");
@@ -201,6 +208,6 @@ function serchCurrentTime(e){
     videoProgress();
 }
 
-setTimeout(durationVideo,1000);
+// setTimeout(durationVideo,1000);
 
 // durationVideo();
