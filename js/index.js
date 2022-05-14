@@ -7,7 +7,8 @@ async function sincrona(url, video) {
     let data = response;
 
     // .then((response) => response.json())
-        video.src = data.url;
+        // video.src = data.url;
+        // debugger;
         setTimeout(durationVideo,1000); 
         console.log(data);
 }
@@ -61,6 +62,7 @@ const durationVideo = ()=>{
     let sec = Math.floor(video.duration % 60);
     let min = Math.floor(video.duration / 60);
     let hours = min / 60;
+    // debugger;
     let duration_min = document.getElementById("duration_min");
     let duration_sec = document.getElementById("duration_sec");
     duration_min.textContent = min + ':';
