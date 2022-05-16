@@ -4,7 +4,7 @@ const url = 'http://www.jplayer.org/video/webm/Incredibles_Teaser.webm';
 const video = document.getElementById("video");
 async function sincrona(url, video) {
     let response = await fetch(url);
-    let data = response;
+    let data = await response;
 
     // .then((response) => response.json())
         // video.src = data.url;
@@ -135,6 +135,7 @@ function setVolume(){
         volume.classList.add("d-none");
         mute.classList.remove("d-none");
     }else{
+        video.muted = false;
         volume.classList.remove("d-none");
         mute.classList.add("d-none");
     }
@@ -153,6 +154,7 @@ function screenFull(){
         media.classList.remove("col-lg-8");
         media.classList.add("col-lg-12");
         entryFullscreen();
+        video.addEventListener("mousemove", ControlsHover);
     }else{
         fullscreen.classList.remove("d-none");
         fullscreenExit.classList.add("d-none");
@@ -160,7 +162,7 @@ function screenFull(){
         controls.classList.remove("control__fullscreen");
         media.classList.remove("col-lg-12");
         media.classList.add("col-lg-8");
-        
+        controls.style = 'visibility:visible';
         removeFullscreen();
     } 
 }
@@ -195,11 +197,10 @@ video_container.addEventListener("fullscreenchange", ()=>{
         controls.classList.remove("control__fullscreen");
         media.classList.remove("col-lg-12");
         media.classList.add("col-lg-8");
-
+        video.removeEventListener("mousemove", ControlsHover);
+        // clearTimeout(controlsTime);
     }
-    //else{
-    //     console.log("entra");
-    // }
+    
 })
 speedSelect.addEventListener("change", ()=>{
     video.playbackRate = speedSelect.value;
@@ -212,6 +213,17 @@ function serchCurrentTime(e){
     video.currentTime = Math.floor((video.duration * porcentaje) / 100);
     setTimeVideo();
     videoProgress();
+}
+
+function ControlsHover (){
+    let controlFullscreen = document.querySelector(".control__fullscreen");
+    controlFullscreen.classList.add("animate");
+    // document.querySelector(".animate").style = 'animation: barra 3s forwards';
+
+    setTimeout(()=>{
+        // controlFullscreen.style = 'animation-name: auto;';
+        controlFullscreen.classList.remove("animate");
+    },3000);
 }
 
 // setTimeout(durationVideo,1000);
