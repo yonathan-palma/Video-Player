@@ -10,8 +10,8 @@ async function sincrona(url, video) {
         // video.src = data.url;
         // debugger;
         setTimeout(durationVideo,1000); 
-        console.log(data);
 }
+sincrona(url, video);
 
     
 
@@ -23,6 +23,7 @@ const mute = document.querySelector(".bi-volume-mute");
 const volumeRange = document.getElementById("volumeRange");
 const fullScreen = document.getElementById("fullScreen");
 const progressBar = document.getElementById("progress_bar_video");
+const progressCircle = document.querySelector(".progress_circle");
 const progress_video = document.querySelector(".progress_video");
 const speedSelect = document.getElementById("speedVideo");
 let videoBarProgress;
@@ -38,14 +39,17 @@ window.addEventListener("keydown", keyEvent);
 
 const videoProgress = ()=>{
     // progressBar.style.width = `${Math.floor((video.currentTime / video.duration) * 100)}%`;
-    progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+    // progressCircle.style = `margin-left:${Math.floor((video.currentTime / video.duration) * 100)}%`;
+    let porcentaje = (video.currentTime / video.duration) * 100;
+    progressCircle.style.transform = `translateX(${((progress_video.offsetWidth * porcentaje) / 100) - 7}px)`;
+
+    progressBar.style.width = `${porcentaje}%`;
     if (video.ended) {
         let play = document.querySelector(".bi-play");
         let pause = document.querySelector(".bi-pause-fill");
         pause.classList.add("d-none");
         play.classList.remove("d-none"); 
-        setTimeout(stopVideo, 500);
-        
+        setTimeout(stopVideo, 500);     
     }
 }
 
@@ -162,7 +166,6 @@ function screenFull(){
         controls.classList.remove("control__fullscreen");
         media.classList.remove("col-lg-12");
         media.classList.add("col-lg-8");
-        controls.style = 'visibility:visible';
         removeFullscreen();
     } 
 }
@@ -227,6 +230,5 @@ function ControlsHover (){
 }
 
 // setTimeout(durationVideo,1000);
-sincrona(url, video);
 
 // durationVideo();
